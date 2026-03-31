@@ -314,11 +314,18 @@
       Оставьте контакт - мы пришлем PDF с характеристиками, фото и условиями предзаказа.
     </p>
 
-    <form action="https://formspree.io/f/your-id" method="POST">
-      <input type="text" name="name" placeholder="Имя">
-      <input type="text" name="telegram" placeholder="Telegram или телефон">
-      <input type="email" name="email" placeholder="E-mail">
-      <textarea name="message" placeholder="Какая версия интересна: 500 / 1000 / 2000 ВА?"></textarea>
+    <form action="https://formsubmit.co/konst_m@mail.ru" method="POST">
+      <input type="hidden" name="_subject" value="Новая заявка с AURORA Reference Power">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="https://musyakaev.github.io/auroralab/thanks.html">
+    
+      <input type="text" name="Имя" placeholder="Имя">
+      <input type="text" name="Telegram или телефон" placeholder="Telegram или телефон" required>
+      <input type="email" name="E-mail" placeholder="E-mail">
+    
+      <textarea name="Интерес" placeholder="Какая версия интересна: 500 / 1000 / 2000 ВА?"></textarea>
+    
       <button type="submit">Получить PDF и цену</button>
     </form>
   </section>
