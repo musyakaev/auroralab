@@ -277,12 +277,6 @@
       grid-template-columns: repeat(2, 1fr);
     }
 
-    .gallery-grid {
-      grid-template-columns: 1.3fr 1fr;
-      gap: 20px;
-      align-items: stretch;
-    }
-
     .story-grid,
     .contact-grid {
       grid-template-columns: repeat(2, 1fr);
@@ -381,46 +375,58 @@
       margin-bottom: 8px;
     }
 
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      align-items: stretch;
+    }
+    
     .gallery-item {
       position: relative;
       overflow: hidden;
       border-radius: 24px;
       border: 1px solid var(--line);
       background: #141920;
-      min-height: 280px;
+      min-height: 420px;
       box-shadow: var(--shadow);
     }
-
-    .gallery-item.large {
-      min-height: 560px;
-    }
-
+    
     .gallery-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center;
     }
-
+    
+    .gallery-item.front img {
+      object-position: center 38%;
+    }
+    
+    .gallery-item.inside img,
+    .gallery-item.assembly img {
+      object-position: center center;
+    }
+    
     .gallery-caption {
       position: absolute;
       left: 0;
       right: 0;
       bottom: 0;
       padding: 22px;
-      background: linear-gradient(180deg, transparent, rgba(0,0,0,0.82));
-      min-height: 132px;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,0.84));
+      min-height: 130px;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
     }
-
+    
     .gallery-caption h3 {
       margin-bottom: 8px;
       font-size: 20px;
       line-height: 1.1;
     }
-
+    
     .caption {
       max-width: 28rem;
       font-size: 15px;
@@ -461,23 +467,28 @@
     }
 
     @media (max-width: 1100px) {
-      .hero-grid,
-      .feature-grid,
-      .gallery-grid,
-      .story-grid,
-      .contact-grid,
-      .model-grid {
-        grid-template-columns: 1fr;
+        .gallery-grid {
+          grid-template-columns: 1fr;
+        }
+      
+        .gallery-item {
+          min-height: 360px;
+        }
       }
-
-      .gallery-item.large {
-        min-height: 420px;
-      }
-    }
-
-    @media (max-width: 760px) {
-      .container {
-        width: min(calc(100% - 20px), var(--max));
+      
+      @media (max-width: 760px) {
+        .gallery-item {
+          min-height: 300px;
+        }
+      
+        .gallery-caption {
+          min-height: 118px;
+          padding: 18px;
+        }
+      
+        .gallery-caption h3 {
+          font-size: 18px;
+        }
       }
 
       .nav {
@@ -733,17 +744,17 @@
 
     <section id="gallery">
       <div class="container">
-
+    
         <div class="section-head">
           <h2>Галерея</h2>
           <p>
             Реальные фотографии корпуса, внутреннего устройства и процесса сборки.
           </p>
         </div>
-
+    
         <div class="gallery-grid">
-
-          <div class="gallery-item large">
+    
+          <div class="gallery-item front">
             <img src="front.jpg" alt="Вид спереди" />
             <div class="gallery-caption">
               <h3>Вид спереди</h3>
@@ -752,30 +763,27 @@
               </p>
             </div>
           </div>
-        
-          <div>
-            <div class="gallery-item" style="margin-bottom:20px;">
-              <img src="inside.jpg" alt="Внутреннее устройство" />
-              <div class="gallery-caption">
-                <h3>Внутреннее устройство</h3>
-                <p class="caption">
-                  Трансформатор, разводка, экранирование и внутренняя архитектура устройства.
-                </p>
-              </div>
+    
+          <div class="gallery-item inside">
+            <img src="inside.jpg" alt="Внутреннее устройство" />
+            <div class="gallery-caption">
+              <h3>Внутреннее устройство</h3>
+              <p class="caption">
+                Трансформатор, разводка, экранирование и внутренняя архитектура устройства.
+              </p>
             </div>
-        
-            <div class="gallery-item">
-              <img src="assembly.jpg" alt="Ручная сборка" />
-              <div class="gallery-caption">
-                <h3>Ручная сборка</h3>
-                <p class="caption">
-                  Индивидуальная сборка и контроль каждого устройства серии.
-                </p>
-              </div>
-            </div>
-            
           </div>
-        
+    
+          <div class="gallery-item assembly">
+            <img src="assembly.jpg" alt="Ручная сборка" />
+            <div class="gallery-caption">
+              <h3>Ручная сборка</h3>
+              <p class="caption">
+                Индивидуальная сборка и контроль каждого устройства серии.
+              </p>
+            </div>
+          </div>
+    
         </div>
       </div>
     </section>
